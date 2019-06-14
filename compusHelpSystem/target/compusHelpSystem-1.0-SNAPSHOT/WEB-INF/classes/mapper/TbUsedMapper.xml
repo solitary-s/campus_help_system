@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aloneness.compusHelpSystem.dao.UsedDao">
+
+    <insert id="saveUsed" parameterType="com.aloneness.compusHelpSystem.entity.Used" keyProperty="used_detail_id" keyColumn="used_detail_id"
+            useGeneratedKeys="true">
+        INSERT INTO tb_used(publish_id,accept_id,order_type,order_status,used_detail_id) VALUES
+        (#{publish_id},#{accept_id},#{order_type},#{order_status},#{usedDetail.used_detail_id})
+    </insert>
+
+
+    <update id="updateUsedByAccept" parameterType="com.aloneness.compusHelpSystem.entity.Used">
+        UPDATE tb_used SET accept_id=#{accept_id}, order_status=#{order_status} WHERE used_id = #{used_id}
+    </update>
+
+    <update id="cancelUsed" parameterType="com.aloneness.compusHelpSystem.entity.Used">
+        UPDATE tb_used SET order_status=#{order_status} WHERE used_id = #{used_id}
+    </update>
+
+    <update id="finishUsed" parameterType="com.aloneness.compusHelpSystem.entity.Used">
+        UPDATE tb_used SET order_status=#{order_status} WHERE used_id = #{used_id}
+    </update>
+
+    <update id="finishUsedDetail" parameterType="com.aloneness.compusHelpSystem.entity.UsedDetail">
+        UPDATE tb_useddetail SET used_publishtime=#{used_publishtime} WHERE used_detail_id = #{used_detail_id}
+    </update>
+
+
+    <select id="getByUsedDetailId" resultMap="UsedResultMap" parameterType="String">
+        SELECT * FROM tb_used u,tb_useddetail ud WHERE u.used_detail_id = ud.used_detail_id AND u.used_detail_id = #{used_detail_id}
+    </select>
+
+    <select id="queryUsedByPage" parameterType="map" resultMap="UsedResultMap">
+        SELECT * FROM tb_used u,tb_useddetail ud WHERE u.used_detail_id = ud.used_detail_id AND u.order_status = 1001
+        ORDER BY used_id DESC limit #{currPage}, #{pageSize}
+    </select>
+
+    <select id="queryUsedByPageAndSearCh" parameterType="map" resultMap="UsedResultMap">
+        SELECT * FROM tb_used e,tb_useddetail ed WHERE e.used_detail_id = ed.used_detail_id AND e.order_status = 1001 AND ed.used_title LIKE "%"#{search_content}"%"
+        ORDER BY used_id DESC limit #{currPage}, #{pageSize}
+    </select>
+
+    <select id="getUsedByPublish" parameterType="String" resultMap="UsedResultMap">
+        SELECT * FROM tb_used o,tb_useddetail od WHERE o.used_detail_id = od.used_detail_id AND order_status = 1001 AND
+        publish_id = #{publish_id} ORDER BY used_id DESC
+    </select>
+
+    <select id="getUsedByAccept" parameterType="String" resultMap="UsedResultMap">
+        SELECT * FROM tb_used o,tb_useddetail od WHERE o.used_detail_id = od.used_detail_id AND order_status = 1002 AND
+        accept_id = #{accept_id} ORDER BY used_id DESC
+    </select>
+
+    <select id="getUsedByProcess" parameterType="String" resultMap="UsedResultMap">
+        SELECT * FROM tb_used o,tb_useddetail od WHERE o.used_detail_id = od.used_detail_id AND order_status = 1002 AND
+        publish_id = #{phone} ORDER BY used_id DESC
+    </select>
+
+    <select id="getUsedByFinish" parameterType="String" resultMap="UsedResultMap">
+        SELECT * FROM tb_used o,tb_useddetail od WHERE o.used_detail_id = od.used_detail_id AND order_status = 1003 AND
+        (accept_id = #{phone} OR  publish_id = #{phone}) ORDER BY used_id  DESC
+    </select>
+
+
+    <resultMap id="UsedResultMap" type="com.aloneness.compusHelpSystem.entity.Used">
+        <id property="used_id" column="used_id"></id>
+        <result property="publish_id" column="publish_id"></result>
+        <result property="accept_id" column="accept_id"></result>
+        <result property="order_type" column="order_type"></result>
+        <result property="order_status" column="order_status"></result>
+        <association property="usedDetail" javaType="com.aloneness.compusHelpSystem.entity.UsedDetail">
+            <id property="used_detail_id" column="used_detail_id"></id>
+            <result property="used_publishtime" column="used_publishtime"></result>
+            <result property="used_title" column="used_title"></result>
+            <result property="used_message" column="used_message"></result>
+            <result property="used_contact" column="used_contact"></result>
+            <result property="used_price" column="used_price"></result>
+            <result property="used_note" column="used_note"></result>
+            <result property="used_img" column="used_img"></result>
+            <result property="used_finishtime" column="used_finishtime"></result>
+        </association>
+    </resultMap>
+
+</mapper>

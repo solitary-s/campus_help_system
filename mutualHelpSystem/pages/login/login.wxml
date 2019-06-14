@@ -1,0 +1,40 @@
+<!--pages/login/login.wxml-->
+<!--tab切换-->
+<view class="swiper-tab">
+  <view class="swiper-tab-list_one swiper-tab-list {{currentTab==0 ? 'loginOn' : ''}}" data-current="0" bindtap="swichNav">用户登录</view>
+  <view class="swiper-tab-list_two swiper-tab-list {{currentTab==1 ? 'loginOn' : ''}}" data-current="1" bindtap="swichNav">用户注册</view>
+</view>
+
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight-31}}px" bindchange="bindChange">
+
+  <!--用户登录-->
+  <swiper-item>
+    <form bindsubmit='userLogin'>
+      <view>
+        <input placeholder="手机账号" name="account" type="number" maxlength="11" bindinput="bindKeyInput_phone" class="input_username" />
+        <input name="password" type="password" placeholder="密码" class="input_username" />
+      </view>
+      <view class='login'>
+        <button formType="submit" type="primary">登 录</button>
+      </view>
+    </form>
+
+  </swiper-item>
+
+
+  <!--用户注册-->
+  <swiper-item>
+    <form bindsubmit='userRegister'>
+      <view>
+        <input placeholder="请输入手机账号" name="account" type="number" maxlength="11" bindinput="bindKeyInput_phone" class="input_username" />
+        <input name="password" type="password" placeholder="请输入密码" class="input_username" />
+        <input name="password_again" type="password" placeholder="再一次输入密码" class="input_username" />
+        <input name="email" placeholder="email" bindchange="bindKeyInput_email" class="input_username" />
+        <input name="nickname" placeholder="昵称" class="input_username" />
+      </view>
+      <view class='login'>
+        <button formType="submit" type="primary">注 册</button>
+      </view>
+    </form>
+  </swiper-item>
+</swiper>

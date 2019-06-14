@@ -1,0 +1,17 @@
+<view class='search'>
+  <view class="search_express" catchtap="search">
+    <icon class="big" type="search" size="15" /> 输入快递公司或送达地址
+  </view>
+</view>
+
+<view>
+  <scroll-view style="height: {{windowHeight}}px; width: {{windowWidth}}px;" scroll-y="true" bindscrolltoupper="pullDownRefresh" bindscrolltolower="pullUpLoad">
+    <view class="container">
+      <import src="/pages/template/template" />
+      <template is="order_list" data="{{expresses}}"></template>
+
+      <button type="default" size="{{defaultSize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" catchtap="onloadmore" class="more" wx:if="{{no_more == false}}">点击加载更多</button>
+      <view wx:if="{{no_more}}" class="no_more">没有更多了..</view>
+    </view>
+  </scroll-view>
+</view>

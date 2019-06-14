@@ -1,0 +1,27 @@
+<!--pages/user/publishExpress/publishExpress.wxml-->
+
+<view class='publishOrder'>
+  <view class="top">
+    <view class="pic">
+      <image src="/images/show/express.png" mode="widthFix"></image>
+    </view>
+    <view class="top_right">
+      <text class="publish_order_title">代拿快递</text>
+    </view>
+  </view>
+
+  <form bindsubmit='publishExpress'>
+    <view class='down'>
+      <input name="order_express_campany" placeholder="快递公司" class="order_input" />
+      <textarea name="order_express_message" placeholder='快递信息' class='order_input' auto-focus="true" style="height: 6em"></textarea>
+      <input name="order_express_phone" placeholder="预留电话" bindinput="bindKeyInput_phone" class="order_input" type="number" maxlength="11"/>
+      <input name="order_express_site" placeholder="送到地址" class="order_input" />
+      <input name="order_express_reward" placeholder="报 酬" class="order_input" />
+      <input name="order_express_contact" placeholder="联系电话" bindinput="bindKeyInput_phone" class="order_input" type="number" maxlength="11"/>
+      <textarea name="order_express_note" placeholder='备注' class='order_input' auto-focus="true" style="height: 3em"></textarea>
+    </view>
+    <view class='submit'>
+      <button formType="submit" type="primary">发布</button>
+    </view>
+  </form>
+</view>

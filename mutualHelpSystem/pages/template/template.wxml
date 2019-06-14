@@ -1,0 +1,176 @@
+<!--pages/template/template.wxml-->
+
+<!-- express -->
+<template name="order_list">
+  <block wx:for="{{expresses}}" wx:key="{{item}}">
+    <view class="classify_list" bindtap="detail" id="{{item.expressDetail.express_detail_id}}">
+      <view class="pic">
+        <image src="/images/show/express.png" mode="widthFix"></image>
+      </view>
+      <view class='list_content'>
+        <text class="title">{{item.expressDetail.express_campany}}\n</text>
+        <text class="small">发布时间：{{item.expressDetail.express_publishtime}}\n</text>
+        <text class="small">送达地址：{{item.expressDetail.express_site}}\n</text>
+        <text class="small"> 报 酬 ：¥{{item.expressDetail.express_reward}}\n</text>
+      </view>
+    </view>
+    <view class="hr"></view>
+  </block>
+</template>
+
+<!-- used -->
+<template name="order_used_list">
+  <block wx:for="{{useds}}" wx:key="{{item}}">
+    <view class="classify_list" bindtap="detail" id="{{item.usedDetail.used_detail_id}}">
+      <view class="pic">
+        <image src="/images/show/market-hl.png" mode="widthFix"></image>
+      </view>
+      <view class='list_content'>
+        <text class="title">{{item.usedDetail.used_title}}\n</text>
+        <text class="small">发布时间：{{item.usedDetail.used_publishtime}}\n</text>
+        <!-- <text class="small">送达地址：{{item.usedDetail.express_site}}\n</text> -->
+        <text class="small">出售价格：¥{{item.usedDetail.used_price}}\n</text>
+      </view>
+    </view>
+    <view class="hr"></view>
+  </block>
+</template>
+
+<!-- express-publish-accept-process-finish -->
+<template name="express_list_publish">
+  <block wx:for="{{express_publish}}" wx:key="{{item}}">
+    <view class="classify_list" bindtap="express_detail" id="{{item.expressDetail.express_detail_id}}">
+      <view class="pic">
+        <image src="/images/show/express.png" mode="widthFix"></image>
+      </view>
+      <view class='list_content'>
+        <text class="title">{{item.expressDetail.express_campany}}\n</text>
+        <text class="small">发布时间：{{item.expressDetail.express_publishtime}}\n</text>
+        <text class="small">送到地址：{{item.expressDetail.express_site}}\n</text>
+        <text class="small"> 报 酬 ：¥{{item.expressDetail.express_reward}}\n</text>
+      </view>
+    </view>
+    <view class="hr"></view>
+  </block>
+</template>
+
+<template name="express_list_accept">
+  <block wx:for="{{express_accept}}" wx:key="{{item}}">
+    <view class="classify_list" bindtap="express_detail" id="{{item.expressDetail.express_detail_id}}">
+      <view class="pic">
+        <image src="/images/show/express.png" mode="widthFix"></image>
+      </view>
+      <view class='list_content'>
+        <text class="title">{{item.expressDetail.express_campany}}\n</text>
+        <text class="small">发布时间：{{item.expressDetail.express_publishtime}}\n</text>
+        <text class="small">送到地址：{{item.expressDetail.express_site}}\n</text>
+        <text class="small"> 报 酬 ：¥{{item.expressDetail.express_reward}}\n</text>
+      </view>
+    </view>
+    <view class="hr"></view>
+  </block>
+</template>
+
+<template name="express_list_process">
+  <block wx:for="{{express_process}}" wx:key="{{item}}">
+    <view class="classify_list" bindtap="express_detail" id="{{item.expressDetail.express_detail_id}}">
+      <view class="pic">
+        <image src="/images/show/express.png" mode="widthFix"></image>
+      </view>
+      <view class='list_content'>
+        <text class="title">{{item.expressDetail.express_campany}}\n</text>
+        <text class="small">发布时间：{{item.expressDetail.express_publishtime}}\n</text>
+        <text class="small">送到地址：{{item.expressDetail.express_site}}\n</text>
+        <text class="small"> 报 酬 ：¥{{item.expressDetail.express_reward}}\n</text>
+      </view>
+    </view>
+    <view class="hr"></view>
+  </block>
+</template>
+
+<template name="express_list_finish">
+  <block wx:for="{{express_finish}}" wx:key="{{item}}">
+    <view class="classify_list" bindtap="express_detail" id="{{item.expressDetail.express_detail_id}}">
+      <view class="pic">
+        <image src="/images/show/express.png" mode="widthFix"></image>
+      </view>
+      <view class='list_content'>
+        <text class="title">{{item.expressDetail.express_campany}}\n</text>
+        <text class="small">发布时间：{{item.expressDetail.express_publishtime}}\n</text>
+        <text class="small">送到地址：{{item.expressDetail.express_site}}\n</text>
+        <text class="small"> 报 酬 ：¥{{item.expressDetail.express_reward}}\n</text>
+      </view>
+    </view>
+    <view class="hr"></view>
+  </block>
+</template>
+
+<!-- used-publish-accept-process-finish -->
+
+<template name="used_list_publish">
+  <block wx:for="{{used_publish}}" wx:key="{{item}}">
+    <view class="classify_list" bindtap="used_detail" id="{{item.usedDetail.used_detail_id}}">
+      <view class="pic">
+        <image src="/images/show/market-hl.png" mode="widthFix"></image>
+      </view>
+      <view class='list_content'>
+        <text class="title">{{item.usedDetail.used_title}}\n</text>
+        <text class="small">发布时间：{{item.usedDetail.used_publishtime}}\n</text>
+        <!-- <text class="small">送达地址：{{item.usedDetail.express_site}}\n</text> -->
+        <text class="small">出售价格：¥{{item.usedDetail.used_price}}\n</text>
+      </view>
+    </view>
+    <view class="hr"></view>
+  </block>
+</template>
+
+<template name="used_list_accept">
+  <block wx:for="{{used_accept}}" wx:key="{{item}}">
+    <view class="classify_list" bindtap="used_detail" id="{{item.usedDetail.used_detail_id}}">
+      <view class="pic">
+        <image src="/images/show/market-hl.png" mode="widthFix"></image>
+      </view>
+      <view class='list_content'>
+        <text class="title">{{item.usedDetail.used_title}}\n</text>
+        <text class="small">发布时间：{{item.usedDetail.used_publishtime}}\n</text>
+        <!-- <text class="small">送达地址：{{item.usedDetail.express_site}}\n</text> -->
+        <text class="small">出售价格：¥{{item.usedDetail.used_price}}\n</text>
+      </view>
+    </view>
+    <view class="hr"></view>
+  </block>
+</template>
+
+<template name="used_list_process">
+  <block wx:for="{{used_process}}" wx:key="{{item}}">
+    <view class="classify_list" bindtap="used_detail" id="{{item.usedDetail.used_detail_id}}">
+      <view class="pic">
+        <image src="/images/show/market-hl.png" mode="widthFix"></image>
+      </view>
+      <view class='list_content'>
+        <text class="title">{{item.usedDetail.used_title}}\n</text>
+        <text class="small">发布时间：{{item.usedDetail.used_publishtime}}\n</text>
+        <!-- <text class="small">送达地址：{{item.usedDetail.express_site}}\n</text> -->
+        <text class="small">出售价格：¥{{item.usedDetail.used_price}}\n</text>
+      </view>
+    </view>
+    <view class="hr"></view>
+  </block>
+</template>
+
+<template name="used_list_finish">
+  <block wx:for="{{used_finish}}" wx:key="{{item}}">
+    <view class="classify_list" bindtap="used_detail" id="{{item.usedDetail.used_detail_id}}">
+      <view class="pic">
+        <image src="/images/show/market-hl.png" mode="widthFix"></image>
+      </view>
+      <view class='list_content'>
+        <text class="title">{{item.usedDetail.used_title}}\n</text>
+        <text class="small">发布时间：{{item.usedDetail.used_publishtime}}\n</text>
+        <!-- <text class="small">送达地址：{{item.usedDetail.express_site}}\n</text> -->
+        <text class="small">出售价格：¥{{item.usedDetail.used_price}}\n</text>
+      </view>
+    </view>
+    <view class="hr"></view>
+  </block>
+</template>

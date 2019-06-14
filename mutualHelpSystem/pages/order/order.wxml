@@ -1,0 +1,93 @@
+<!--pages/order/order.wxml-->
+
+<!--用户没有登录的显示页面-->
+<view class="classname" style="display:{{display}}">
+  <text class="login_up">登录后查看订单</text>
+  <view class="login" catchtap="user_login">
+    点击登录
+  </view>
+</view>
+
+<!--用户已经登录的页面-->
+<view class="borrow_list" style="display:{{display_order}}">
+  <!--tab切换-->
+  <view class="swiper-tab">
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">代拿快递</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">二手市场</view>
+  </view>
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" 
+  style="height:{{express_size > used_size ? 120*express_size : 120*used_size }}px">
+    <swiper-item>
+      <view class="swiper-tab_one">
+        <view class="swiper-tab-list_one {{currentTab_one==0 ? 'on_one' : ''}}" data-current="0" bindtap="swichNav_one">发布订单</view>
+        <view class="swiper-tab-list_one {{currentTab_one==1 ? 'on_one' : ''}}" data-current="1" bindtap="swichNav_one">接收订单</view>
+        <view class="swiper-tab-list_one {{currentTab_one==2 ? 'on_one' : ''}}" data-current="2" bindtap="swichNav_one">进行中..</view>
+        <view class="swiper-tab-list_one {{currentTab_one==3 ? 'on_one' : ''}}" data-current="3" bindtap="swichNav_one">完成订单</view>
+      </view>
+      <swiper current="{{currentTab_one}}" class="swiper-box" duration="300" style="height:{{120*express_size}}px" bindchange="bindChange_one">
+        <swiper-item>
+          <view>
+            <import src="/pages/template/template" />
+            <template is="express_list_publish" data="{{express_publish}}"></template>
+          </view>
+        </swiper-item>
+        <swiper-item>
+          <view>
+            <import src="/pages/template/template" />
+            <template is="express_list_accept" data="{{express_accept}}"></template>
+          </view>
+        </swiper-item>
+        <swiper-item>
+          <view>
+            <import src="/pages/template/template" />
+            <template is="express_list_process" data="{{express_process}}"></template>
+          </view>
+        </swiper-item>
+        <swiper-item>
+          <view>
+            <import src="/pages/template/template" />
+            <template is="express_list_finish" data="{{express_finish}}"></template>
+          </view>
+        </swiper-item>
+      </swiper>
+
+    </swiper-item>
+    <swiper-item>
+
+      <view class="swiper-tab_two">
+        <view class="swiper-tab-list_two {{currentTab_two==0 ? 'on_one' : ''}}" data-current="0" bindtap="swichNav_two">发布订单</view>
+        <view class="swiper-tab-list_two {{currentTab_two==1 ? 'on_one' : ''}}" data-current="1" bindtap="swichNav_two">接收订单</view>
+        <view class="swiper-tab-list_two {{currentTab_two==2 ? 'on_one' : ''}}" data-current="2" bindtap="swichNav_two">进行中..</view>
+        <view class="swiper-tab-list_two {{currentTab_two==3 ? 'on_one' : ''}}" data-current="3" bindtap="swichNav_two">完成订单</view>
+      </view>
+      <swiper current="{{currentTab_two}}" class="swiper-box" duration="300" style="height:{{120*used_size}}px" bindchange="bindChange_two">
+        <swiper-item>
+          <view>
+            <import src="/pages/template/template" />
+            <template is="used_list_publish" data="{{used_publish}}"></template>
+          </view>
+        </swiper-item>
+        <swiper-item>
+          <view>
+            <import src="/pages/template/template" />
+            <template is="used_list_accept" data="{{used_accept}}"></template>
+          </view>
+        </swiper-item>
+        <swiper-item>
+          <view>
+            <import src="/pages/template/template" />
+            <template is="used_list_process" data="{{used_process}}"></template>
+          </view>
+        </swiper-item>
+        <swiper-item>
+          <view>
+            <import src="/pages/template/template" />
+            <template is="used_list_finish" data="{{used_finish}}"></template>
+          </view>
+        </swiper-item>
+      </swiper>
+
+
+    </swiper-item>
+  </swiper>
+</view>

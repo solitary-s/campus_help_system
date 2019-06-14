@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aloneness.compusHelpSystem.dao.ExpressDao">
+
+    <insert id="saveExpress" parameterType="com.aloneness.compusHelpSystem.entity.Express" keyProperty="express_detail_id" keyColumn="express_detail_id"
+            useGeneratedKeys="true">
+        INSERT INTO tb_express(publish_id,accept_id,order_type,order_status,express_detail_id) VALUES
+        (#{publish_id},#{accept_id},#{order_type},#{order_status},#{expressDetail.express_detail_id})
+    </insert>
+
+
+    <update id="updateExpressByAccept" parameterType="com.aloneness.compusHelpSystem.entity.Express">
+        UPDATE tb_express SET accept_id=#{accept_id}, order_status=#{order_status} WHERE express_id = #{express_id}
+    </update>
+
+    <update id="cancelExpress" parameterType="com.aloneness.compusHelpSystem.entity.Express">
+        UPDATE tb_express SET order_status=#{order_status} WHERE express_id = #{express_id}
+    </update>
+
+    <update id="finishExpress" parameterType="com.aloneness.compusHelpSystem.entity.Express">
+        UPDATE tb_express SET order_status=#{order_status} WHERE express_id = #{express_id}
+    </update>
+
+    <update id="finishExpressDetail" parameterType="com.aloneness.compusHelpSystem.entity.ExpressDetail">
+        UPDATE tb_expressdetail SET express_finishtime=#{express_finishtime} WHERE express_detail_id = #{express_detail_id}
+    </update>
+
+
+    <select id="getByExpressDetailId" resultMap="ExpressResultMap" parameterType="String">
+        SELECT * FROM tb_express e,tb_expressdetail ed WHERE e.express_detail_id = ed.express_detail_id AND e.express_detail_id = #{express_detail_id}
+    </select>
+
+    <select id="queryExpressByPage" parameterType="map" resultMap="ExpressResultMap">
+        SELECT * FROM tb_express e,tb_expressdetail ed WHERE e.express_detail_id = ed.express_detail_id AND order_status = 1001
+        ORDER BY express_id DESC limit #{currPage}, #{pageSize}
+    </select>
+
+    <select id="queryExpressByPageAndSearCh" parameterType="map" resultMap="ExpressResultMap">
+        SELECT * FROM tb_express e,tb_expressdetail ed WHERE e.express_detail_id = ed.express_detail_id AND order_status = 1001 AND
+        (ed.express_campany LIKE "%"#{search_content}"%" OR ed.express_site LIKE "%"#{search_content}"%" )
+        ORDER BY express_id DESC limit #{currPage}, #{pageSize}
+    </select>
+
+    <select id="getExpressByPublish" parameterType="String" resultMap="ExpressResultMap">
+        SELECT * FROM tb_express o,tb_expressdetail od WHERE o.express_detail_id = od.express_detail_id AND order_status = 1001 AND
+        publish_id = #{publish_id} ORDER BY express_id DESC
+    </select>
+
+    <select id="getExpressByAccept" parameterType="String" resultMap="ExpressResultMap">
+        SELECT * FROM tb_express o,tb_expressdetail od WHERE o.express_detail_id = od.express_detail_id AND order_status = 1002 AND
+        accept_id = #{accept_id} ORDER BY express_id DESC
+    </select>
+
+    <select id="getExpressByProcess" parameterType="String" resultMap="ExpressResultMap">
+        SELECT * FROM tb_express o,tb_expressdetail od WHERE o.express_detail_id = od.express_detail_id AND order_status = 1002 AND
+        publish_id = #{phone} ORDER BY express_id DESC
+    </select>
+
+    <select id="getExpressByFinish" parameterType="String" resultMap="ExpressResultMap">
+        SELECT * FROM tb_express o,tb_expressdetail od WHERE o.express_detail_id = od.express_detail_id AND order_status = 1003 AND
+        (accept_id = #{phone} OR  publish_id = #{phone}) ORDER BY express_id DESC
+    </select>
+
+
+    <resultMap id="ExpressResultMap" type="com.aloneness.compusHelpSystem.entity.Express">
+        <id property="express_id" column="express_id"></id>
+        <result property="publish_id" column="publish_id"></result>
+        <result property="accept_id" column="accept_id"></result>
+        <result property="order_type" column="order_type"></result>
+        <result property="order_status" column="order_status"></result>
+        <association property="expressDetail" javaType="com.aloneness.compusHelpSystem.entity.ExpressDetail">
+            <id property="express_detail_id" column="express_detail_id"></id>
+            <result property="express_publishtime" column="express_publishtime"></result>
+            <result property="express_campany" column="express_campany"></result>
+            <result property="express_message" column="express_message"></result>
+            <result property="express_phone" column="express_phone"></result>
+            <result property="express_site" column="express_site"></result>
+            <result property="express_reward" column="express_reward"></result>
+            <result property="express_contact" column="express_contact"></result>
+            <result property="express_note" column="express_note"></result>
+            <result property="express_finishtime" column="express_finishtime"></result>
+        </association>
+    </resultMap>
+
+</mapper>

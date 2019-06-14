@@ -1,0 +1,42 @@
+<!--pages/user/publishUsed/publishUsed.wxml-->
+<view class='publishOrder'>
+  <view class="top">
+    <view class="pic">
+      <image src="/images/show/market-hl.png" mode="widthFix"></image>
+    </view>
+    <view class="top_right">
+      <text class="publish_order_title">出售二手物品</text>
+    </view>
+  </view>
+
+  <form bindsubmit='publishUsed'>
+    <view class='down'>
+      <input name="order_used_title" placeholder="二手物品" class="order_input" />
+      <textarea name="order_used_message" placeholder='具体信息' class='order_input' auto-focus="true" style="height: 6em"></textarea>
+      <input name="order_used_reward" placeholder="出售价格" class="order_input" />
+      <input name="order_used_contact" placeholder="联系方式(wx or qq)" class="order_input" />
+      <textarea name="order_used_note" placeholder='备注' class='order_input' auto-focus="true" style="height: 3em"></textarea>
+    </view>
+
+    <form bindsubmit="uploadImg">
+      <view class="chooseImge">
+        <view class="choosePic">
+          <image src="{{photos}}" mode="scaleToFill"></image>
+        </view>
+        <view class="choosePic_right">
+          <view bindtap="chooseImg">
+            <text>点击选择图片</text>
+          </view>
+          <view class='img_submit'>
+            <button formType="submit" type="mini">上传图片</button>
+          </view>
+        </view>
+      </view>
+    </form>
+
+
+    <view class='submit'>
+      <button formType="submit" type="primary">发布</button>
+    </view>
+  </form>
+</view>

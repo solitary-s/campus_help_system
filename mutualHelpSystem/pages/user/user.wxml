@@ -1,0 +1,34 @@
+<!--登录界面-->
+<view class="login_father" style="display:{{display_login}}">
+  <!--用户没有登录-->
+  <view class="top" >
+    <text class="top_one" catchtap="to_login">登录/注册\n</text>
+    <text class="top_two">登陆后才可以继续</text>
+  </view>
+  <view class="buttom">
+    <view class="buttom_list">服务电话：0232-3331212</view>
+  </view>
+</view>
+
+<!--个人中心-->
+<view class="borrow_list" style="display:{{display_user}}">
+  <!--用户信息-->
+  <view class="userinfo">
+    <open-data class="userinfo-avatar" type="userAvatarUrl" background-size="cover"></open-data>
+    <text class='userinfo-nickname'>{{username}}</text>
+  </view>
+  
+  <view class="down">
+    <view class="down_list" catchtap="publishExpress">代拿快递</view>
+    <view class="down_list" catchtap="publishUsed">出售二手物品</view>
+    <!-- <view class="down_list" catchtap="publishUsed"></view> -->
+    <view class="down_list" catchtap="publishUsed">手机账号: {{user.account}}</view>
+    <view class="down_list" catchtap="publishUsed">  邮 箱： {{user.email}}</view>
+  </view>
+
+  <!--退出登录-->
+  <view class="downLogin" catchtap="downLogin">
+    退出登录
+  </view>
+
+</view>

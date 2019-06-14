@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aloneness.compusHelpSystem.dao.ExpressDetailDao">
+
+    <insert id="saveExpressDetail" parameterType="com.aloneness.compusHelpSystem.entity.ExpressDetail">
+        INSERT INTO tb_expressdetail VALUES (#{express_detail_id},#{express_publishtime},#{express_campany},#{express_message},
+        #{express_phone},#{express_site},#{express_reward},#{express_contact},#{express_note},#{express_finishtime})
+    </insert>
+
+</mapper>

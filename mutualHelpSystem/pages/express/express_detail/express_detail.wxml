@@ -1,0 +1,53 @@
+<!--pages/express/express_detail/express_detail.wxml-->
+<view class="detail">
+  <view class="top">
+    <view class="pic">
+      <image src="/images/show/express.png" mode="widthFix"></image>
+    </view>
+    <view class="top_right">
+      <text class="order_title">{{express.expressDetail.express_campany}}</text>
+    </view>
+  </view>
+
+  <view class="down">
+    <view class="down_list">
+      发布时间：{{express.expressDetail.express_publishtime}}
+    </view>
+
+    <view class="down_list_content_bottom">
+      快递信息：
+    </view>
+
+    <view class="down_list">
+      {{express.expressDetail.express_message}}
+    </view>
+
+    <view class="down_list">
+      预留电话：{{express.expressDetail.express_phone}}
+    </view>
+
+    <view class="down_list">
+      送达地址：{{express.expressDetail.express_site}}
+    </view>
+
+    <view class="down_list">
+      报 酬：¥ {{express.expressDetail.express_reward}}
+    </view>
+
+    <view class="down_list">
+      联系电话：{{express.expressDetail.express_contact}}
+    </view>
+
+    <view class="down_list_content_bottom">
+      备注：
+    </view>
+
+    <view class="down_list">
+      {{express.expressDetail.express_note}}
+    </view>
+  </view>
+  <view class="submit" catchtap="express_accept">接收订单</view>
+  <view class="down_list_content_bottom">
+
+  </view>
+</view>

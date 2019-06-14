@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="compusHelpSystem-admin:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="compusHelpSystem-admin-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="compusHelpSystem-admin:war exploded" />
+    </root>
+  </artifact>
+</component>

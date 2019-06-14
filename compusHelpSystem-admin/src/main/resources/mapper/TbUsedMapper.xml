@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aloneness.compusHelpSystem.dao.UsedDao">
+
+    <select id="page" resultMap="UsedResultMap" parameterType="Map">
+        select * from tb_used u, tb_useddetail ud
+        <where>
+            u.used_detail_id = ud.used_detail_id
+            <if test="used.publish_id != null and used.publish_id != '' ">
+                and publish_id = #{used.publish_id}
+            </if>
+            <if test="used.accept_id != null and used.accept_id != '' ">
+                and accept_id = #{used.accept_id}
+            </if>
+            <if test="used.usedDetail.used_detail_id != null and used.usedDetail.used_detail_id != '' ">
+                and u.used_detail_id = #{used.usedDetail.used_detail_id}
+            </if>
+        </where>
+        limit #{start}, #{length}
+    </select>
+
+    <select id="count" resultType="int">
+        select COUNT(*) FROM  tb_used
+        <where>
+            <if test="publish_id != null and publish_id != '' ">
+                and publish_id = #{publish_id}
+            </if>
+            <if test="accept_id != null and accept_id != '' ">
+                and accept_id = #{accept_id}
+            </if>
+            <if test="usedDetail.used_detail_id != null and usedDetail.used_detail_id != '' ">
+                and used_detail_id = #{usedDetail.used_detail_id}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateUsed" parameterType="com.aloneness.compusHelpSystem.entity.Used">
+        UPDATE tb_used SET
+        order_status=#{order_status},
+        publish_id=#{publish_id}
+        WHERE used_detail_id = #{usedDetail.used_detail_id}
+    </update>
+
+    <update id="updateUsedDetail" parameterType="com.aloneness.compusHelpSystem.entity.UsedDetail">
+        UPDATE tb_useddetail SET
+        used_title=#{used_title},
+        used_message=#{used_message},
+        used_contact=#{used_contact},
+        used_price=#{used_price},
+        used_note=#{used_note}
+        WHERE used_detail_id = #{used_detail_id}
+    </update>
+
+    <delete id="deleteUsed" parameterType="String">
+        DELETE FROM tb_used WHERE used_detail_id = #{used_detail_id};
+    </delete>
+
+    <delete id="deleteUsedDetail" parameterType="String">
+        DELETE FROM tb_useddetail WHERE used_detail_id = #{used_detail_id};
+    </delete>
+
+    <select id="getByUsedDetailId" resultMap="UsedResultMap" parameterType="String">
+        SELECT * FROM tb_used u,tb_useddetail ud WHERE u.used_detail_id = ud.used_detail_id AND u.used_detail_id = #{used_detail_id}
+    </select>
+
+    <resultMap id="UsedResultMap" type="com.aloneness.compusHelpSystem.entity.Used">
+        <id property="used_id" column="used_id"></id>
+        <result property="publish_id" column="publish_id"></result>
+        <result property="accept_id" column="accept_id"></result>
+        <result property="order_type" column="order_type"></result>
+        <result property="order_status" column="order_status"></result>
+        <association property="usedDetail" javaType="com.aloneness.compusHelpSystem.entity.UsedDetail">
+            <id property="used_detail_id" column="used_detail_id"></id>
+            <result property="used_publishtime" column="used_publishtime"></result>
+            <result property="used_title" column="used_title"></result>
+            <result property="used_message" column="used_message"></result>
+            <result property="used_contact" column="used_contact"></result>
+            <result property="used_price" column="used_price"></result>
+            <result property="used_note" column="used_note"></result>
+            <result property="used_img" column="used_img"></result>
+            <result property="used_finishtime" column="used_finishtime"></result>
+        </association>
+    </resultMap>
+
+</mapper>

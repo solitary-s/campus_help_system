@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/express/express",
+    "pages/order/order",
+    "pages/user/user",
+    "pages/login/login",
+    "pages/user/publishExpress/publishExpress",
+    "pages/usedMarket/usedMarket",
+    "pages/express/express_search/express_search",
+    "pages/express/express_detail/express_detail",
+    "pages/user/publishUsed/publishUsed",
+    "pages/usedMarket/usedMarket_search/usedMarket_search",
+    "pages/usedMarket/usedMarket_detail/usedMarket_detail",
+    "pages/order/order_express_detail/order_express_detail",
+    "pages/order/order_used_detail/order_used_detail"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "white",
+    "navigationBarTitleText": "校园互助系统",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#282828",
+    "selectedColor": "#1296db",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/express/express",
+        "iconPath": "images/tab/expressage.png",
+        "selectedIconPath": "images/tab/expressage-hl.png",
+        "text": "代拿快递"
+      },
+      {
+        "pagePath": "pages/usedMarket/usedMarket",
+        "iconPath": "images/tab/market.png",
+        "selectedIconPath": "images/tab/market-hl.png",
+        "text": "二手市场"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "iconPath": "images/tab/order.png",
+        "selectedIconPath": "images/tab/order-hl.png",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "images/tab/user.png",
+        "selectedIconPath": "images/tab/user-hl.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

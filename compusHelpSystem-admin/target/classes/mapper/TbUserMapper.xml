@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aloneness.compusHelpSystem.dao.UserDao">
+
+    <select id="page" resultType="User" parameterType="Map">
+        select account,password,username,email,created from tb_user
+        <where>
+            <if test="user.username != null and user.username != '' ">
+                and username LIKE CONCAT ('%',#{user.username},'%')
+            </if>
+            <if test="user.account != null and user.account != '' ">
+                and account LIKE CONCAT ('%',#{user.account},'%')
+            </if>
+            <if test="user.email != null and user.email != '' ">
+                and email LIKE CONCAT ('%',#{user.email},'%')
+            </if>
+        </where>
+        limit #{start}, #{length}
+    </select>
+
+    <select id="count" resultType="int">
+        select COUNT(*) FROM  tb_user
+        <where>
+            <if test="username != null and username != '' ">
+                and username LIKE CONCAT ('%',#{username},'%')
+            </if>
+            <if test="account != null and account != '' ">
+                and account LIKE CONCAT ('%',#{account},'%')
+            </if>
+            <if test="email != null and email != '' ">
+                and email LIKE CONCAT ('%',#{email},'%')
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert">
+        insert into tb_user VALUES (#{account},#{password},#{username},#{email},#{created})
+    </insert>
+
+    <update id="update">
+        UPDATE tb_user SET password=#{password},username=#{username},email=#{email},created=#{created} WHERE account = #{account}
+    </update>
+
+    <select id="getByAccount" resultType="User" parameterType="String">
+        select account,password,username,email,created from tb_user WHERE account = #{account}
+    </select>
+
+    <select id="search" resultType="User">
+       select account,password,username,email,created from tb_user
+       <where>
+           <if test="username != null and username != '' ">
+               and username LIKE CONCAT ('%',#{username},'%')
+           </if>
+           <if test="account != null and account != '' ">
+               and account LIKE CONCAT ('%',#{account},'%')
+           </if>
+           <if test="email != null and email != '' ">
+               and email LIKE CONCAT ('%',#{email},'%')
+           </if>
+       </where>
+    </select>
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM tb_user WHERE account = #{account};
+    </delete>
+
+</mapper>

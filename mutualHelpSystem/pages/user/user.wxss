@@ -1,0 +1,101 @@
+/* pages/user/user.wxss */
+page{
+  background-color:#F5F5F5;
+  width:100%;
+}
+.user,.manager,.super_manager{
+    display: block;
+    background: #1296db;
+    padding: 20rpx;
+    margin: 20rpx;
+    text-align: center;
+}
+.user{
+     margin-top: 300rpx;
+}
+/*用户没有登录*/
+.login_father{
+  width: 100%;
+}
+.borrow_list{
+  width:100%;
+}
+.top{
+   height:120rpx;
+  background-color:#1296db;
+  color:#fff;
+  padding-top:130rpx;
+  padding-left:50rpx;
+
+}
+.top_one{
+
+}
+.top_two{
+  font-size:28rpx;
+
+}
+.buttom{
+  background-color: #E1E5E8;
+}
+.buttom_list{
+ background-color:#fff;
+  font-size:36rpx;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  margin-top:20rpx;
+  padding-left:40rpx;
+}
+
+/*成功登录后*/
+/*用户头像和名字的显示*/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1296db;
+  padding-top:100rpx;
+  padding-bottom:50rpx;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: black;
+}
+
+.usermotto {
+  margin-top: 20px;
+}
+/*成功登录的列表*/
+.down{
+  margin-top: 24rpx;
+  background-color: #E1E5E8;
+}
+.down_list,.downLogin{
+  background-color:#fff;
+  font-size:36rpx;
+  padding:30rpx;
+  padding-left:40rpx;
+  border-bottom: 1rpx solid #E1E5E8;
+}
+.down_list_first{
+  border-top: 1rpx solid #E1E5E8;
+}
+
+/*退出登录*/
+.downLogin{
+    display: block;
+    padding:20rpx;
+    padding-left:0rpx;
+    margin-top: 50rpx;
+    text-align: center;
+    width: 100%;
+    color: red;
+    margin-bottom:30rpx;
+}

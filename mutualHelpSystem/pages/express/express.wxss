@@ -1,0 +1,97 @@
+view{
+   font-size:26rpx;
+   color:rgba(0,0,0,0.7);
+   line-height:45rpx;
+}
+.classify_list{
+     display:flex;
+     flex-direction: row;
+     padding:22rpx;
+}
+/*标题要明显，其他不太明显*/
+.title{
+    font-size: 38rpx;
+    font-weight: 600;
+    color: rgb(0,0,0);
+
+}
+.small{
+    font-size: 30rpx;
+    color: rgb(0,0,0,0.8);
+}
+
+swiper{
+    height: 370rpx;
+    padding-top:10rpx;
+
+}
+
+/*搜索部分*/
+.search{
+    display: flex;
+    flex-direction: row;
+    padding-top:12rpx;
+    font-size: 32rpx;
+    color: #979797;
+    background-color: #1296db;
+    padding-bottom: 16rpx;
+}
+.search_express{
+    line-height: 40rpx;
+    height: 40rpx;
+    width: 90%;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+    margin: 10rpx auto;
+    background: #fff;
+    color:rgba(0,0,0,0.6);
+    border-radius: 30rpx;
+    padding-left: 30rpx;
+    font-size:30rpx;
+}
+.big{
+    position: relative;
+    top: 6rpx;
+    left: 4rpx;
+}
+
+
+.pic{
+    width: 30%;
+    display: inline-block;
+}
+.pic image{
+    width: 80%;
+}
+.hr,.hrr{
+    height:20rpx;
+    width: 100%;
+    background-color: black;
+    border-top: white solid 1px ;
+    border-bottom: white solid 1px;
+    opacity:0.1;
+}
+.hrr{
+    height:10px;
+}
+
+.list_content{
+    width: 70%;
+    display: inline-block;
+    padding-top: 10rpx;
+    padding-left: 10rpx;
+}
+
+/*加载更多按钮*/
+.more{
+    font-size:34rpx;
+    background-color: #F9F9F9;
+}
+/*没有更多信息了*/
+.no_more{
+    padding-top:20rpx;
+    padding-bottom:20rpx;
+    text-align: center;
+    background-color: #F9F9F9;
+    font-size:30rpx;
+}

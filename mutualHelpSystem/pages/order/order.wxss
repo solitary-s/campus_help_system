@@ -1,0 +1,166 @@
+/* pages/order/order.wxss */
+
+.classname {
+  padding: 35%;
+  padding-top: 50%;
+}
+
+/*登录按钮*/
+
+.login {
+  display: inline-block;
+  background: #1296db;
+  padding: 14rpx;
+  text-align: center;
+  margin: 10rpx auto;
+  color: #fff;
+  font-size: 30rpx;
+  padding-left: 50rpx;
+  padding-right: 50rpx;
+}
+
+/*登录按钮上面的文字*/
+
+.login_up {
+  text-align: center;
+  font-size: 30rpx;
+  color: #000;
+}
+
+/*设置整个页面的公共属性*/
+
+view {
+  font-size: 34rpx;
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 45rpx;
+}
+
+.bottom {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+
+/*tab切换*/
+
+.swiper-tab {
+  width: 100%;
+  border-bottom: 2rpx solid #777;
+  text-align: center;
+  line-height: 60rpx;
+  padding-top: 20rpx;
+}
+
+.swiper-tab-list {
+  font-size: 40rpx;
+  display: inline-block;
+  width: 50%;
+  color: #777;
+}
+
+.on {
+  color: #1296db;
+  border-bottom: 5rpx solid #1296db;
+}
+
+.swiper-tab_one {
+  width: 100%;
+  border-bottom: 2rpx solid #777;
+  text-align: center;
+  line-height: 60rpx;
+  padding-top: 20rpx;
+}
+
+.swiper-tab-list_one {
+  font-size: 40rpx;
+  display: inline-block;
+  width: 25%;
+  color: #777;
+}
+
+.on_one {
+  color: #1296db;
+  border-bottom: 5rpx solid #1296db;
+}
+
+.swiper-tab_two {
+  width: 100%;
+  border-bottom: 2rpx solid #777;
+  text-align: center;
+  line-height: 60rpx;
+  padding-top: 20rpx;
+}
+
+.swiper-tab-list_two {
+  font-size: 40rpx;
+  display: inline-block;
+  width: 25%;
+  color: #777;
+}
+
+.on_two {
+  color: #1296db;
+  border-bottom: 5rpx solid #1296db;
+}
+
+.swiper-box {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+view{
+   font-size:26rpx;
+   color:rgba(0,0,0,0.7);
+    line-height:45rpx;
+}
+.classify_list{
+     display:flex;
+     flex-direction: row;
+     padding:22rpx;
+}
+/*标题要明显，其他不太明显*/
+.title{
+    font-size: 38rpx;
+    font-weight: 600;
+    color: rgb(0,0,0);
+
+}
+.small{
+    font-size: 30rpx;
+    color: rgb(0,0,0,0.8);
+}
+
+swiper{
+    height: 370rpx;
+    padding-top:10rpx;
+
+}
+
+.pic{
+    width: 30%;
+    display: inline-block;
+}
+.pic image{
+    width: 80%;
+}
+.hr,.hrr{
+    height:20rpx;
+    width: 100%;
+    background-color: black;
+    border-top: white solid 1px ;
+    border-bottom: white solid 1px;
+    opacity:0.1;
+}
+.hrr{
+    height:10px;
+}
+
+.list_content{
+    width: 70%;
+    display: inline-block;
+    padding-top: 10rpx;
+    padding-left: 10rpx;
+}

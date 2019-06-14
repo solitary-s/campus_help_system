@@ -1,0 +1,55 @@
+<!--pages/order/order_used_detail/order_used_detail.wxml-->
+<view class="detail">
+  <view class="top">
+    <view class="pic">
+      <image src="/images/show/market-hl.png" mode="widthFix"></image>
+    </view>
+    <view class="top_right">
+      <text class="order_title">{{used.usedDetail.used_title}}</text>
+    </view>
+  </view>
+
+  <view class="down">
+    <view class="down_list">
+      发布时间：{{used.usedDetail.used_publishtime}}
+    </view>
+
+    <view class="down_list_content_bottom">
+      物品信息：
+    </view>
+
+    <view class="down_list">
+      {{used.usedDetail.used_message}}
+    </view>
+
+    <view class="down_list">
+      出售价格：¥ {{used.usedDetail.used_price}}
+    </view>
+
+    <view class="down_list">
+      联系方式：{{used.usedDetail.used_contact}}
+    </view>
+
+    <view class="down_list_content_bottom">
+      备注：
+    </view>
+
+    <view class="down_list">
+      {{used.usedDetail.used_note}}
+    </view>
+
+    <view class='used_img'>
+      <image src='{{used_img}}' mode="widthFix"></image>
+    </view>
+
+  </view>
+  <block wx:if="{{hiddenFlag0 == true}}">
+    <view class="submit" catchtap="cancel_order">取消订单</view>
+  </block>
+  <block wx:if="{{hiddenFlag2 == true}}">
+    <view class="submit" catchtap="finish_order">完成订单</view>
+  </block>
+  <view class="down_list_content_bottom">
+
+  </view>
+</view>

@@ -1,0 +1,92 @@
+/* pages/login/login.wxss */
+
+/* pages/login/login.wxss */
+.container{
+    width: 98%;
+    margin:0 auto;
+}
+
+.input_phone{
+    display: flex;
+    flex-direction: row;
+    padding:20rpx;
+    border-bottom: 1rpx solid #999;
+    margin-top: 20rpx;
+}
+/*输入框的宽度*/
+.input_one{
+   margin-top: 10rpx;
+}
+.input_two{
+    width: 70%;
+}
+
+.btn{
+    line-height: 60rpx;
+    border: 1rpx solid #999;
+    font-size: 30rpx;
+    text-align: center;
+    padding-left: 10rpx;
+    padding-right: 10rpx;
+}
+
+/*登录按钮*/
+.login{
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+    padding-bottom: 20rpx;
+    padding-top: 20rpx;
+    border-radius: 10rpx;
+    margin-top: 25rpx;
+}
+.login button{
+  background-color: #1296db;
+}
+
+/*tab切换*/
+.swiper-tab{
+  width: 100%; 
+  height:320rpx;
+  text-align: center; 
+  line-height:50rpx;
+  position: relative;
+  background-image: url("https://mcache.ifanr.cn/static/gbuild/user/images/bg-mobile.png");
+  background-size: cover;
+
+}
+.swiper-tab-list{
+  font-size: 38rpx; 
+  display: inline-block; 
+  width: 30%; 
+  color: #656A71;
+  position: absolute;
+  bottom: 20rpx;
+}
+.swiper-tab-list_one{ /*用户登录*/
+    left: 10%;
+}
+.swiper-tab-list_two{ /*用户注册*/
+    left: 55%;
+}
+.loginOn{
+  color: #fff; 
+  border-bottom: 5rpx solid #fff;
+}
+.swiper-box{ 
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+ }
+
+
+.input_username{
+    
+    padding:30rpx;
+    border-bottom:1rpx solid #999;
+    margin-top:20rpx;
+}
+
+

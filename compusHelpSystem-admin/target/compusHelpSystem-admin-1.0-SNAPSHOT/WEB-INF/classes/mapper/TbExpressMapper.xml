@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aloneness.compusHelpSystem.dao.ExpressDao">
+
+    <select id="page" resultMap="ExpressResultMap" parameterType="Map">
+        select * from tb_express e, tb_expressdetail ed
+        <where>
+            e.express_detail_id = ed.express_detail_id
+            <if test="express.publish_id != null and express.publish_id != '' ">
+                and publish_id = #{express.publish_id}
+            </if>
+            <if test="express.accept_id != null and express.accept_id != '' ">
+                and accept_id = #{express.accept_id}
+            </if>
+            <if test="express.expressDetail.express_detail_id != null and express.expressDetail.express_detail_id != '' ">
+                and e.express_detail_id = #{express.expressDetail.express_detail_id}
+            </if>
+        </where>
+        limit #{start}, #{length}
+    </select>
+
+    <select id="count" resultType="int">
+        select COUNT(*) FROM  tb_express
+        <where>
+            <if test="publish_id != null and publish_id != '' ">
+                and publish_id = #{publish_id}
+            </if>
+            <if test="accept_id != null and accept_id != '' ">
+                and accept_id = #{accept_id}
+            </if>
+            <if test="expressDetail.express_detail_id != null and expressDetail.express_detail_id != '' ">
+                and express_detail_id = #{expressDetail.express_detail_id}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateExpress" parameterType="com.aloneness.compusHelpSystem.entity.Express">
+        UPDATE tb_express SET
+        order_status=#{order_status},
+        publish_id=#{publish_id}
+        WHERE express_detail_id = #{expressDetail.express_detail_id}
+    </update>
+
+    <update id="updateExpressDetail" parameterType="com.aloneness.compusHelpSystem.entity.ExpressDetail">
+        UPDATE tb_expressdetail SET
+        express_campany=#{express_campany},
+        express_message=#{express_message},
+        express_phone=#{express_phone},
+        express_site=#{express_site},
+        express_reward=#{express_reward},
+        express_contact=#{express_contact},
+        express_note=#{express_note}
+        WHERE express_detail_id = #{express_detail_id}
+    </update>
+
+    <delete id="deleteExpress" parameterType="String">
+        DELETE FROM tb_express WHERE express_detail_id = #{express_detail_id};
+    </delete>
+
+    <delete id="deleteExpressDetail" parameterType="String">
+        DELETE FROM tb_expressdetail WHERE express_detail_id = #{express_detail_id};
+    </delete>
+
+    <select id="getByExpressDetailId" resultMap="ExpressResultMap" parameterType="String">
+        SELECT * FROM tb_express e,tb_expressdetail ed WHERE e.express_detail_id = ed.express_detail_id AND e.express_detail_id = #{express_detail_id}
+    </select>
+
+    <resultMap id="ExpressResultMap" type="com.aloneness.compusHelpSystem.entity.Express">
+        <id property="express_id" column="express_id"></id>
+        <result property="publish_id" column="publish_id"></result>
+        <result property="accept_id" column="accept_id"></result>
+        <result property="order_type" column="order_type"></result>
+        <result property="order_status" column="order_status"></result>
+        <association property="expressDetail" javaType="com.aloneness.compusHelpSystem.entity.ExpressDetail">
+            <id property="express_detail_id" column="express_detail_id"></id>
+            <result property="express_publishtime" column="express_publishtime"></result>
+            <result property="express_campany" column="express_campany"></result>
+            <result property="express_message" column="express_message"></result>
+            <result property="express_phone" column="express_phone"></result>
+            <result property="express_site" column="express_site"></result>
+            <result property="express_reward" column="express_reward"></result>
+            <result property="express_contact" column="express_contact"></result>
+            <result property="express_note" column="express_note"></result>
+            <result property="express_finishtime" column="express_finishtime"></result>
+        </association>
+    </resultMap>
+
+</mapper>
